@@ -1,0 +1,31 @@
+<ul class="site-menu">
+  <ng-template #recursiveList let-categories >
+    <li class="site-menu-item" *ngFor="let item of categories" [hidden]="!item.isVisible">
+      <a [routerLink] = "['/items', item.id]" >
+        <span class="site-menu-title-icon" *ngIf="item.parent == null"><i class="material-icons">directions_car</i></span>
+        <span class="site-menu-title">{{item.title}}</span>
+        <span class="site-menu-arrow" *ngIf="item.CategoriesDto.length > 0 && item.CategoriesDto[0].isVisible"><i class="material-icons">keyboard_arrow_down</i></span>
+      </a>
+      <ul class="site-menu-submenu" *ngIf="item.CategoriesDto.length > 0 && item.CategoriesDto[0].isVisible">
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.CategoriesDto }"></ng-container>
+      </ul>
+      <span class="site-menu-separator"></span>
+    </li>
+  </ng-template>
+
+  <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: categories }"></ng-container>
+</ul>
+
+<section class="items mb-3">
+  <app-new-items></app-new-items>
+</section>
+
+
+<section class="items mb-3">
+  <app-new-sidebar-articles></app-new-sidebar-articles>
+</section>
+
+
+
+<hr>
+<app-fb-link></app-fb-link>

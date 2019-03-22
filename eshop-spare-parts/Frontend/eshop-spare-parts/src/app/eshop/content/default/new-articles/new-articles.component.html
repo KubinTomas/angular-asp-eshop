@@ -1,0 +1,10 @@
+<div class="progress-spinner-wrapper" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+</div>
+
+<section *ngIf="!isLoading">
+    <header>Poslední příspěvky</header>
+    <main class="row slick-articles">
+      <app-new-art-preview *ngFor="let article of articles" [article]="article" class="article" [style.display]="getSlickDisplay()"></app-new-art-preview>
+    </main>
+</section>

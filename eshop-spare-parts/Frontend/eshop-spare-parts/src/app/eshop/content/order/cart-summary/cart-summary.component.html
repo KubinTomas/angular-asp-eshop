@@ -1,0 +1,48 @@
+<section class="row">
+  <div class="col-12 item mb-2" *ngFor="let item of shoppingCart.cartItems">
+    <div class="row">
+      <div class="col-2">
+        <div class="img-wrapper">
+          <div class="img-vertical"><img src="{{(item.imagePath != null) && 'https://api.ndusti.cz'+item.imagePath || '/assets/imgs/no-pic.jpg'}}" /></div>
+        </div>
+      </div>
+      <div class="col-4">
+        <h4 class="title"><a [routerLink]="['../item-detail', item.id ]">{{item.title}}</a></h4>
+      </div>
+      <div class="col-2">
+        <mat-form-field class="example-full-width">
+          <input matInput type="number"
+                 class="text-center"
+                 onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                 placeholder="Počet položek" value="item.countInCart" pattern="[0-9]" min="0" step="1"
+                 [value]="item.countInCart"
+                 (input)="onItemCountChange($event, item)">
+
+        </mat-form-field>
+      </div>
+      <div class="col-2 text-right pt-3 d-none">
+        <b>{{ (+item.weight  * (+item.countInCart))  | number : '1.1-1'}} </b><small>Kg</small>
+      </div>
+      <div class="col-4 text-right pt-3">
+        <b>{{item.price * item.countInCart}} </b><small class="mr-3">Kč</small>
+        <span class="delete float-right" (click)="onItemDelete(item)"><i class="material-icons">delete</i></span>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-12 border-top pt-3">
+    <div class="row">
+      <div class="col-8"></div>
+      <!--<div class="col-2 text-right"><p class="float-left">Váha</p> <b>{{shoppingCart.itemsWeight() | number : '1.1-1'}} </b><small>Kg</small></div>-->
+      <div class="col-4 text-right"><p class="float-left">Cena</p> <b>{{shoppingCart.getTotalCartPrice()}} </b><small class="mr-3">Kč</small></div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <a class="float-left" class="btn btn-primary" routerLink="/" mat-button >Pokračovat v nákupu</a>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-primary float-right" mat-button matStepperNext>Další</button>
+      </div>
+    </div>
+  </div>
+</section>

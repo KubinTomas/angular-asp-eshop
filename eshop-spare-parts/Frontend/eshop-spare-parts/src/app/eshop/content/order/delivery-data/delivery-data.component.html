@@ -1,0 +1,129 @@
+<div class="progress-spinner-wrapper" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<mat-card class="form-wrapper" *ngIf="!isLoading">
+  <mat-card-content>
+    <h2>Osobní údaje</h2>
+    <hr />
+    <form [formGroup]="form" (ngSubmit)="submit(form)">
+      <div formGroupName="personalData" class="row">
+        <div class="col-6">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Jméno" formControlName="name">
+          </mat-form-field>
+        </div>
+
+        <div class="col-6">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Příjmení" formControlName="surname">
+          </mat-form-field>
+        </div>
+
+        <div class="col-6">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Email" formControlName="email">
+          </mat-form-field>
+        </div>
+
+        <div class="col-6">
+          <mat-form-field>
+            <input matInput type="number" placeholder="Telefoní číslo" formControlName="phoneNumber">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div formGroupName="billingAddress" class="row">
+        <div class="col-12">
+          <h2>Fakturacni adresa</h2>
+          <hr />
+        </div>
+        <div class="col-6">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Mesto" formControlName="town">
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Ulice a cislo popisne" formControlName="townStreet">
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Poštovní směrovací číslo" formControlName="townNumber">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-checkbox #orderDifferentDataCheckBox (change)="onOrderDifferentChange($event)">
+        Zboží chci doručit na jinou
+        adresu
+      </mat-checkbox>
+      <div *ngIf="orderDifferentDataCheckBox.checked" @fade>
+        <div formGroupName="orderDifferentDataAndAddress" class="row">
+          <div class="col-12">
+            <h2>Dodací adresa</h2>
+            <hr />
+          </div>
+          <div class="col-6">
+            <mat-form-field>
+              <input matInput type="text" placeholder="Jméno" formControlName="name">
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field>
+              <input matInput type="text" placeholder="Příjmení" formControlName="surname">
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field>
+              <input matInput type="text" placeholder="Email" formControlName="email">
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field>
+              <input matInput type="number" placeholder="Telefoní číslo" formControlName="phoneNumber">
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field>
+              <input matInput type="text" placeholder="Mesto" formControlName="town">
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field>
+              <input matInput type="text" placeholder="Ulice a cislo popisne" formControlName="townStreet">
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field>
+              <input matInput type="text" placeholder="Poštovní směrovací číslo" formControlName="townNumber">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+
+      <section>
+        <mat-checkbox [checked]="" formControlName="agreePersonalData">
+          Souhlasím se zpracováním
+          osobních údajů
+        </mat-checkbox>
+      </section>
+      <div class="row">
+        <div class="col-6">
+            <button class="float-left btn btn-primary" mat-button matStepperPrevious>Zpátky</button>
+        </div>
+        <div class="col-6">
+          <div class="btn-right">
+            <button color="primary" mat-raised-button [disabled]="form.invalid">Dokončit objednávku</button>
+          </div>
+        </div>
+      </div>
+
+     
+
+     
+    </form>
+  </mat-card-content>
+</mat-card>

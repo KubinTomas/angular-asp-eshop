@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-12">
+    <header>
+      Novinky
+    </header>
+    <main>
+      <div class="progress-spinner-wrapper" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+      </div>
+
+        <section class="row slick" id="slickVertical" *ngIf="!isLoading" >
+
+          <div class="col-12 p-0" *ngFor="let item of itemManager.lastInsertedItems.ItemsDto" [style.display]="getDisplay()">
+            <div class="row m-0 item" >
+              <div class="col-5">
+                <div class="img-wrapper ">
+                  <a [routerLink]="['/item-detail', item.id]" class="img-link">
+                     <img src="{{(item.imagePath != null) && 'https://api.ndusti.cz'+item.imagePath || '/assets/imgs/no-pic.jpg'}}" />
+                  </a>
+                </div>
+              </div>
+              <div class="col-7 pl-0">
+                <a [routerLink]="['/item-detail', item.id]" class="title">{{item.title}}</a>
+                <div class="prices">
+                  <b class="price-new">{{item.price}} Kč</b>
+                </div>
+                <button class="btn btn-primary add-to-cart float-left d-flex" (click)="onItemAdd(item)">
+                  <i class="material-icons">add_shopping_cart</i> Přidat
+                </button>
+              </div>
+
+            </div>
+          </div>
+          <!-- <app-item *ngFor="let item of itemManager.items.ItemsDto" [item]="item"></app-item> -->
+
+        </section>
+    </main>
+  </div>
+</div>

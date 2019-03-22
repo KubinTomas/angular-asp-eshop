@@ -1,0 +1,38 @@
+<app-is-loading *ngIf="isLoading"></app-is-loading>
+
+<section *ngIf="!isLoading" class="shipment">
+  <div *ngIf="cart.itemsWeight() <= 50" class="row">
+    <div class="col-12">
+      <h4>Zvolte typ dopravy</h4>
+    </div>
+    <div class="col-12">
+      <ul class="shipments">
+        <ng-container *ngFor="let company of transportCompanies">
+          <li *ngIf="cart.getPrice(company.id) != 0">
+            <mat-radio-button value="company" (click)="onCompanySelect(company)">
+              {{company.name}} <span> {{company.price}} Kc</span>
+            </mat-radio-button>
+          </li>
+        </ng-container>
+
+      </ul>
+    </div>
+    <div class="col-12">
+      <hr />
+      <p class="mb-0 d-none">Celková váha <span class="float-right"><b>{{cart.itemsWeight() | number : '1.1-1'}} </b> <small>Kg</small></span></p>
+      <p>Celková cena <span class="float-right"><b>{{cart.getTotalCartPrice() + price}}  </b> <small>Kč</small></span></p>
+    </div>
+  
+  </div>
+  <div *ngIf="cart.itemsWeight() > 50">
+    Zasilka musi byt do 50 kg.
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <button class="float-left btn btn-primary" mat-button matStepperPrevious>Zpátky</button>
+    </div>
+    <div class="col-6">
+      <button class="btn btn-primary float-right" mat-button matStepperNext>Další</button>
+    </div>
+  </div>
+</section>

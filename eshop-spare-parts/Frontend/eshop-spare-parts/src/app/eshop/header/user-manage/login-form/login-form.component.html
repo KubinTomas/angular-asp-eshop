@@ -1,0 +1,42 @@
+<div class="progress-spinner-wrapper" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<mat-card class="form-wrapper" [style.display]="isLoading">
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit(form)">
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="Email" formControlName="email">
+
+        <mat-error *ngIf="email.touched && email.invalid">
+          <div *ngIf="email.errors.required">Email je <strong>povinný.</strong></div>
+          <div *ngIf="email.errors.email && !email.errors.required"><strong>Chybná</strong> emailová adresa.</div>
+        </mat-error>
+
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Heslo" formControlName="password">
+
+        <mat-error *ngIf="password.touched && password.invalid">
+          <div *ngIf="password.errors.required">Heslo je <strong>povinné.</strong></div>
+        </mat-error>
+      </mat-form-field>
+
+      
+      <section *ngIf="invalidLogin">
+        <div class="alert alert-danger" >Chybné jméno a/nebo heslo.</div>
+      </section>
+
+      <div class="btn-center">
+        <button color="primary" mat-raised-button [disabled]="form.invalid">{{submitButtonText}}</button>
+      </div>
+
+      <div class="btn-center back-button">
+        <a color="accent" mat-raised-button (click)="onBack()">Zpět</a>
+      </div>
+    </form>
+    <br />
+    <p>Nemáte účet? Zaregistrujte se <a routerLink="/registration-form">zde</a>.</p>
+  </mat-card-content>
+</mat-card>

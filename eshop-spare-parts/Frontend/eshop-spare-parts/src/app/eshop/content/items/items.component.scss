@@ -1,0 +1,93 @@
+@import "./src/variables.scss";
+app-items {
+
+  section {
+    overflow: hidden;
+
+    .cat-wrapp {
+      padding: 2px;
+
+      .cat {
+
+
+        .category {
+          display: block;
+          width: 100%;
+          position: relative;
+          color: #151735;
+          font-size: 18px;
+          font-family: Calibri;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          max-width: 100%;
+          float: left;
+
+          .text {
+            margin-left: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+
+          i {
+            position: absolute;
+            color: #007bff;
+            left: 0px;
+            top: 49%;
+            transform: translate(0%, -50%);
+            font-size: 16px;
+          }
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+
+
+  .search-item {
+    width: 225px;
+
+    .mat-form-field-wrapper {
+      .mat-form-field-flex {
+        .mat-form-field-infix {
+          i {
+            position: absolute;
+            right: 0;
+          }
+
+          input {
+            max-width: 80%;
+          }
+        }
+      }
+    }
+  }
+
+  .mat-form-field.mat-focused {
+    .mat-form-field-ripple {
+      background: $secondary-color;
+    }
+
+
+
+    .mat-form-field-label {
+      color: $secondary-color;
+    }
+  }
+
+  .ng5-slider {
+    .ng5-slider-span {
+      .ng5-slider-bar {
+        background: $secondary-color;
+      }
+    }
+
+    .ng5-slider-pointer {
+      background-color: $secondary-color !important;
+    }
+  }
+}

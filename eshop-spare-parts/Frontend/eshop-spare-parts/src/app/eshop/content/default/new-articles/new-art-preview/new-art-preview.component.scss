@@ -1,0 +1,52 @@
+@import "./src/variables.scss";
+
+.article-wrapper {
+  margin: 15px;
+  margin-top: 0px;
+
+  .img-wrapper {
+    width: 100%;
+    max-width: 100%;
+
+    .img-link {
+      display: table-cell;
+      vertical-align:middle;
+      max-height:250px;
+      height:250px;
+      width: 100%;
+      text-align:center;
+
+
+      img {
+        width: 100%;
+        display: initial;
+        max-height: 100%;
+      }
+    }
+  }
+
+  .info {
+    .title {
+      display: block;
+      padding-top: 5px;
+      width: 100%;
+      font-weight: bolder;
+      color: #151735;
+      font-family: Calibri;
+      text-align: center;
+      font-size: 18px;
+      text-decoration: none;
+      padding: 5px;
+      height: 63px;
+      overflow: hidden;
+    }
+
+    .createdby {
+    }
+  }
+}
+
+ 
+
+  
+

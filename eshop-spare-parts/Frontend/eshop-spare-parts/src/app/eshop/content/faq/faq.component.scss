@@ -1,0 +1,35 @@
+@import "./src/variables.scss";
+
+.question.open{
+
+  main{
+    display:block;
+  }
+}
+
+.question {
+  header {
+    background-color: $primary-color;
+    color: white;
+    font-family: Calibri;
+    text-transform: none;
+    font-size: 16px;
+    cursor: pointer;
+    letter-spacing: normal;
+    padding: 0;
+
+    h2 {
+      font-size: 22px;
+    }
+  }
+
+
+  main {
+    display: none;
+    min-height:auto;
+    padding:5px!important;
+    p{
+      margin:0px;
+    }
+  }
+}

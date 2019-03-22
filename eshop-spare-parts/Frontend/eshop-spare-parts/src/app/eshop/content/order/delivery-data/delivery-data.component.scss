@@ -1,0 +1,39 @@
+@import "./src/variables.scss";
+
+
+
+  .mat-card {
+    width: 100%;
+    box-shadow: none !important;
+  }
+
+  .form-wrapper {
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .mat-checkbox {
+    .mat-checkbox-inner-container {
+      .mat-checkbox-ripple .mat-ripple-element {
+        background-color: #69b1e373 !important;
+      }
+    }
+  }
+
+  .mat-checkbox-checked {
+    .mat-checkbox-inner-container {
+      .mat-checkbox-ripple .mat-ripple-element {
+        background-color: #69b1e373 !important;
+      }
+
+      .mat-checkbox-frame {
+        border-color: $secondary-color !important;
+      }
+
+      .mat-checkbox-background {
+        background-color: $secondary-color !important;
+      }
+    }
+  }
+

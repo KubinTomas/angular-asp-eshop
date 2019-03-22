@@ -1,0 +1,18 @@
+<section>
+  <h2>Moje objednávky <small class="float-right">Stav</small></h2>
+  <hr />
+  <div *ngFor="let order of orders" class="row border m-0 mb-3">
+    <div class="col-12 border-bottom">
+      <h4 class="mb-0"><a [routerLink]="['/order-detail', order.code]">Číslo objednávky: {{order.code}}</a> <b class="float-right border-left pl-2">{{order.status.code}}</b></h4>
+    </div>
+    <div class="col-12">
+      <p>Vytvořeno <b class="float-right">{{order.created | date: 'd.M.yyyy'}}</b></p>
+      <p *ngIf="order.finished != null">Vyřízeno <b class="float-right">{{order.finished | date: 'd.M.yyyy'}}</b></p>
+
+    </div>
+
+  </div>
+
+</section>
+
+

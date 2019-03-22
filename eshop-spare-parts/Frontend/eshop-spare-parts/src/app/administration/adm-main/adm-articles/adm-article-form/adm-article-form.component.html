@@ -1,0 +1,44 @@
+<div class="progress-spinner-wrapper" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="container-fluid">
+  <mat-card  class="row" *ngIf="!isLoading" >
+    <mat-card-content class="col-12">
+      <form [formGroup]="form" (ngSubmit)="submit(form)" class="row">
+
+        <mat-form-field class="col-12 mb-3">
+          <input matInput type="text" placeholder="Název" formControlName="header">
+        </mat-form-field>
+
+        <!-- <mat-form-field>
+          <textarea matInput placeholder="Popis" formControlName="content" cdkTextareaAutosize></textarea>
+        </mat-form-field> -->
+        <editor apiKey="test" [init]="{plugins: 'link'}" formControlName="content" class="col-12 mb-3"></editor>
+
+        <section class="custom-file-input file-input-wrapper col-12 mb-3">
+          <label for="file-upload" class="custom-file-upload">
+            <mat-icon>attach_file</mat-icon>
+          </label>
+          <input id="file-upload" type="file" (change)="onFileSelect($event)" accept="image/x-png,image/gif,image/jpeg" />
+          <div class="fake-input-style">
+            <div class="text">{{bgImgPath}}</div>
+          </div>
+          <label class="hint">Náhledový obrázek</label>
+        </section>
+
+        <section class="col-6">
+          <div class="float-left back-button">
+            <a color="accent" mat-raised-button (click)="onBack()">Zpět</a>
+          </div>
+        </section>
+        <section class="col-6">
+          <div class="float-right">
+            <button color="primary" mat-raised-button [disabled]="form.invalid">{{submitButtonText}}</button>
+          </div>
+        </section>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

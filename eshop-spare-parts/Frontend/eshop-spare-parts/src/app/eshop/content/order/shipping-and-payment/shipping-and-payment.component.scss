@@ -1,0 +1,41 @@
+@import "./src/variables.scss";
+
+.shipments{
+  list-style-type:none;
+  padding-left:0px;
+
+  li{
+
+  }
+}
+
+
+  .mat-accent.mat-radio-checked {
+    .mat-radio-outer-circle {
+      border-color: $secondary-color !important;
+    }
+
+    .mat-radio-inner-circle {
+      background-color: $secondary-color !important;
+    }
+
+    .mat-radio-ripple .mat-ripple-element {
+      background-color: #69b1e373 !important;
+    }
+  }
+
+  .mat-radio-button {
+
+    .mat-radio-inner-circle {
+      background-color: $secondary-color !important;
+    }
+
+    .mat-radio-ripple .mat-ripple-element {
+      background-color: #69b1e373 !important;
+    }
+
+    .mat-radio-ripple .mat-ripple-element {
+      background-color: #69b1e373 !important;
+    }
+  }
+

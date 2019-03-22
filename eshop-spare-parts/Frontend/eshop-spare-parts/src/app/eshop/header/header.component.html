@@ -1,0 +1,131 @@
+<header>
+  <div class="top">
+    <div class="row ">
+      <div class="col-3 social pl-0">
+        <ul class="p-0  list">
+          <li class="list-inline-item"><i class="mdi mdi-facebook-box"></i></li>
+          <li class="list-inline-item"><i class="mdi mdi-instagram"></i></li>
+          <li class="list-inline-item"><i class="mdi mdi-twitter-box"></i></li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <div class="row m-0">
+          <div class="col-12 text-center">
+            <ul class="list-inline contact">
+              <li class="d-inline"><i class="far fa-envelope"></i> info@ndusti.cz</li>
+              <li class="d-inline"><i class="fas fa-phone"></i>+420 723 699 435</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 text-right pr-0">
+        <div class="login" *ngIf="authService.isLoggedIn()">
+          <span ><span class="menu-open" (click)="open($event)">{{authService.currentUser.email}}</span>
+            <mat-icon>account_circle</mat-icon>
+          </span>
+          <ul id="matMenu">
+            <li class="menu-item">
+              <a mat-menu-item class="no-outline" routerLink="/profil">
+                <mat-icon class="mat-menu-icon">account_circle</mat-icon>
+                <span>Profil</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a mat-menu-item class="no-outline" routerLink="/user-orders">
+                <mat-icon class="mat-menu-icon">inbox</mat-icon>
+                <span>Objednávky</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a mat-menu-item class="no-outline" routerLink="/administration" *ngIf="authService.isAdmin()">
+                <mat-icon class="mat-menu-icon">dns</mat-icon>
+                <span>Administrace</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a mat-menu-item class="no-outline" (click)="onLogout()">
+                <mat-icon class="mat-menu-icon">settings_power</mat-icon>
+                <span>Odhlásit</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="login" *ngIf="!authService.isLoggedIn()">
+          <a routerLink="/login"><span>Přihlásit se</span>
+            <mat-icon>account_circle</mat-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <div class="logo-wrapper">
+        <a routerLink=""><img src="/assets/imgs/logo.png" class="logo" /></a>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="d-flex">
+        <ul class="list-inline mx-left justify-content-center">
+          <li class="list-inline-item"><a routerLink="/articles">Novinky</a></li>
+          <li class="list-inline-item"><a routerLink="/terms-and-conditions">Obchodní podmínky</a></li>
+          <!-- <li class="list-inline-item"><a routerLink="/about">O nás</a></li>
+          <li class="list-inline-item"><a routerLink="/contacts">Kontakt</a></li> -->
+          <li class="list-inline-item"><a routerLink="/faq">FAQ</a></li>
+          <li class="list-inline-item"><a routerLink="/question-form">Sháním díl</a></li>
+          
+        </ul>
+      </div>
+
+    </div>
+    <div class="col-5">
+      <div class="row">
+        <div class="col-9">
+          <div class="search-wrapper">
+            <!-- (change) = "onFilterItems(search)"  -->
+            <form class="">
+              <input type="text" placeholder="Zadejte hledaný výraz" class="form-control search" aria-label="Number" [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='onSearchChange($event)'>
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option.filterWord}}
+                </mat-option>
+              </mat-autocomplete>
+            </form>
+            <mat-icon>search</mat-icon>
+
+            <!-- <form>
+
+
+        <input [formControl]="myControl" class="form-control search" type="text" placeholder="Zadejte hledaný výraz"
+        [matAutocomplete]="auto"
+        />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option"  (onSelectionChange)="onSelect($event)">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        <mat-icon>search</mat-icon>
+
+      </form> -->
+
+          </div>
+        </div>
+        <div class="col-3 pl-0 shopping-cart">
+          <div class="cart-wrapper" (mouseleave)="mouseLeave($event)" (mouseenter)="mouseEnter($event) " >
+            <a routerLink="/order" >
+              <mat-icon class="cart-icon">shopping_cart</mat-icon>
+              <div class="total-price">{{cart.getTotalCartPrice()}} Kč</div>
+            </a><span class="count">{{cart.itemsCount()}}</span>
+            <app-shopping-cart></app-shopping-cart>
+          </div>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</header>

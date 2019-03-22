@@ -1,0 +1,125 @@
+<div class="progress-spinner-wrapper" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="container-fluid">
+  <mat-card *ngIf="!isLoading" class="row">
+    <mat-card-content class="col-12">
+      <form [formGroup]="form" (ngSubmit)="submit(form)" class="row">
+
+        <mat-form-field class="col-12 mb-3">
+          <input matInput type="text" placeholder="Název" formControlName="title">
+          <!--
+    <mat-error *ngIf="email.touched && email.invalid">
+      <div *ngIf="email.errors.required">Email je <strong>povinný.</strong></div>
+    </mat-error> -->
+
+        </mat-form-field>
+
+        <editor apiKey="test" [init]="{plugins: 'link'}" formControlName="description" class="col-12 mb-3"></editor>
+        <!-- <mat-form-field>
+          <textarea matInput placeholder="Popis" formControlName="description" cdkTextareaAutosize></textarea>
+        </mat-form-field> -->
+
+        <mat-form-field class="col-6 mb-3">
+          <input matInput type="number" step="0.1" placeholder="Vaha" formControlName="weight" [min]="0">
+          <div matSuffix>[Kg]</div>
+        </mat-form-field>
+
+        <mat-form-field class="col-6 mb-3">
+          <input matInput type="text" placeholder="Doba dodání" formControlName="deliveryDate">
+        </mat-form-field>
+
+        <mat-form-field class="col-6 mb-3">
+          <input matInput type="number" placeholder="Cena" formControlName="price">
+        </mat-form-field>
+
+        <mat-form-field class="col-6 mb-3">
+          <input matInput type="number" placeholder="Klamavá sleva" formControlName="fakeDiscount">
+        </mat-form-field>
+
+        <section class="custom-file-input file-input-wrapper col-12 mb-3">
+          <label for="file-upload" class="custom-file-upload">
+            <mat-icon>attach_file</mat-icon>
+          </label>
+          <input id="file-upload" type="file" (change)="onFileSelect($event)" accept="image/x-png,image/gif,image/jpeg" />
+          <div class="fake-input-style">
+            <div class="text">{{bgImgPath}}</div>
+          </div>
+          <label class="hint">Náhledový obrázek</label>
+        </section>
+
+        <section class="custom-file-input file-input-wrapper col-12 mb-3">
+          <label for="multiple-file-upload" class="custom-file-upload">
+            <mat-icon>attach_file</mat-icon>
+          </label>
+          <input id="multiple-file-upload" type="file" multiple (change)="onMultipleFileSelect($event)" accept="image/x-png,image/gif,image/jpeg" />
+          <div class="fake-input-style">
+            <div class="text"></div>
+          </div>
+          <label class="hint">Zbylé obrázky pro detail položky</label>
+        </section>
+
+
+        <mat-form-field class="col-12 mb-3">
+          <mat-select placeholder="Dostupnost zboží" formControlName="itemAvailabilityId">
+            <mat-option *ngFor="let availability of itemAvailabilities" [value]="availability.id">
+              {{availability.title}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="col-12 mb-3">
+          <mat-select placeholder="Stav zboží" formControlName="itemStateId">
+            <mat-option *ngFor="let state of itemStates" [value]="state.id">
+              {{state.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <!-- <section>
+          <mat-checkbox [checked]="" formControlName="available">Item je dostupný</mat-checkbox>
+        </section> -->
+
+        <mat-radio-group class="example-radio-group" formControlName="categoryId" contenteditable="col-12">
+          <div class="col-12">
+            <ul class="category-list">
+              <ng-template #recursiveList let-categories>
+                <li *ngFor="let item of categories" class="category-item">
+                  <mat-radio-button *ngIf="item.CategoriesDto.length == 0" [value]="item.id">
+                    {{item.title}}
+                  </mat-radio-button>
+                  <span *ngIf="item.CategoriesDto.length > 0">{{item.title}}</span>
+                  <ul *ngIf="item.CategoriesDto.length > 0" class="category-submenu">
+                    <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.CategoriesDto }"></ng-container>
+                  </ul>
+                </li>
+              </ng-template>
+              <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: categories }"></ng-container>
+            </ul>
+          </div>
+
+        </mat-radio-group>
+        <div class="col-12 mb-3">
+          <div class="float-right">
+            <button color="primary" mat-raised-button [disabled]="form.invalid">{{submitButtonText}}</button>
+          </div>
+
+          <div class="float-left back-button">
+            <a color="accent" mat-raised-button (click)="onBack()">Zpět</a>
+          </div>
+        </div>
+        
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+
+  <div *ngFor="let image of item.images">
+    <a (click)="onImageDelete(image)">Delete : {{image.id}}</a>
+    <hr>
+    {{image.imagePath}}
+
+  </div>
+
+</div>

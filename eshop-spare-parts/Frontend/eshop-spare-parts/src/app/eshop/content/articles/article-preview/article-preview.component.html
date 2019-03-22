@@ -1,0 +1,19 @@
+<div class="col-4 p-0">
+  <div class="img-wrapper">
+    <a class="img-link" [routerLink]="['/article-detail', article.id]">  <img src="{{(article.imagePath != null) && 'https://api.ndusti.cz'+article.imagePath || '/assets/imgs/no-pic.jpg'}}" /></a>
+  </div>
+</div>
+<div class="col-8">
+  <h2 class="title">
+    <a [routerLink]="['/article-detail', article.id]">
+      {{article.header}}
+    </a>
+  </h2>
+  <div class="description">
+    <div class="description-inner" [innerHTML]="article.content"></div>
+    <div class="fadeout"></div>
+  </div>
+  <a class="see-more" [routerLink]="['/article-detail', article.id]">Zobrazit více</a>
+</div>
+
+

@@ -1,0 +1,49 @@
+<div class="progress-spinner-wrapper" *ngIf="!itemManager.isReady()">
+  <mat-spinner></mat-spinner>
+</div>
+
+<section class="filter row m-3">
+  <div *ngFor="let category of itemManager.categoryInPage" class="col-3 cat-wrapp" [hidden]="!category.isVisible">
+    <div class="cat">
+      <a class="category" [routerLink]="[ '/items', category.id ]"><i class="material-icons">subdirectory_arrow_right</i> <span class="text">{{category.title}}</span></a> 
+    </div>
+   
+  </div>
+  <div class="col-12 p-0">
+
+    <mat-form-field class="example-full-width float-right search-item">
+      <input matInput [(ngModel)]="filterString" placeholder="Zadejte hledaný výraz" (input)="onSearchChange()"> <i class="material-icons">search</i>
+    </mat-form-field>
+    <!-- https://angular-slider.github.io/ng5-slider/ -->
+    <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" *ngIf="!isLoading" (userChange)="onPriceSliderChange()"></ng5-slider>
+
+
+  </div>
+ 
+</section>
+
+
+
+
+<section *ngIf="itemManager.isReady()">
+  <div class="row slick-items">
+    <app-item *ngFor="let item of activePageDataChunk"
+      [item]="item" class="col-3 mt-3 mb-3 item"></app-item>
+  </div>
+
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)">
+  </mat-paginator>
+</section>
+
+<!-- 
+  Legacy paginator
+
+  <section *ngIf="itemManager.isReady()">
+  <div class="row slick-items">
+    <app-item *ngFor="let item of (activePageDataChunk | priceFilter:minValue:maxValue) | itemFilter:'id,title':filterString"
+      [item]="item" class="col-3 mt-3 mb-3 item"></app-item>
+  </div>
+
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)">
+  </mat-paginator>
+</section> -->

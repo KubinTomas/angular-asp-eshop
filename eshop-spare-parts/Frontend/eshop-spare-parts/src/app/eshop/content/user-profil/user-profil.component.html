@@ -1,0 +1,57 @@
+<app-is-loading *ngIf="isLoading"></app-is-loading>
+
+<section>
+  <div>{{errorMessage}}</div>
+</section>
+
+<section *ngIf="!isLoading">
+    <div class="row">
+      <div class="col-3">
+        <!--left col-->
+
+        <div class="text-center">
+          <h2 *ngIf="user.name != null">{{user.name}}  {{user.surname}}</h2>
+          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style="border-radius: 100%;">
+
+        </div>
+        <br />
+      </div><!--/col-3-->
+      <div class="col-9">
+        <div class="row">
+          <div class="col-6 mb-3">
+            <h4>Jméno</h4>
+           {{user.name}}
+          </div>
+          <div class="col-6  mb-3">
+            <h4>Příjmení</h4>
+            {{user.surname}} 
+          </div>
+          <div class="col-6  mb-3">
+            <h4>Email</h4>
+            {{user.email}} 
+          </div>
+
+          <div class="col-6  mb-3">
+            <h4>Telefon</h4>
+            {{user.phoneNumber}} 
+          </div>
+          <div class="col-6  mb-3">
+            <h4>Město</h4>
+            {{user.town}} 
+          </div>
+          <div class="col-6  mb-3">
+            <h4>Ulice</h4>
+            {{user.townStreet}}
+          </div>
+          <div class="col-6  mb-3">
+            <h4>PSČ</h4>
+            {{user.townNumber}}
+          </div>
+          <div class="col-12">
+            <a class="btn btn-primary" [routerLink]="[ '/edit-profil']">Upravit</a>
+          </div>
+        </div>
+      </div><!--/col-9-->
+  </div><!--/row-->
+
+</section>

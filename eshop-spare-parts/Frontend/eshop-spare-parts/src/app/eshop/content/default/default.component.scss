@@ -1,0 +1,135 @@
+@import "./src/variables.scss";
+
+
+$slick-height: 350px;
+app-default {
+
+  #mainSlick {
+    .slick-slider {
+      height: $slick-height;
+      max-height: $slick-height;
+
+      > .slick-list {
+        height: $slick-height;
+
+        .slick-track {
+          height: $slick-height;
+        }
+      }
+    }
+  }
+
+  .slide {
+    position: relative;
+
+    img {
+      width: 100%;
+      background: center center no-repeat;
+      height: $slick-height;
+      background-size: cover;
+      z-index: -1;
+      content: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
+    }
+
+    .text {
+      z-index: 99;
+      color: #fff;
+      top: 0;
+      width: 35%;
+      height: $slick-height;
+      background-color: #07081533;
+      position: absolute;
+
+      .title {
+        text-align: center;
+        padding: 50px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 30px;
+        font-size: 26px;
+        font-family: Calibri;
+        font-weight: bolder;
+      }
+
+      .desc {
+        padding: 20px;
+        font-family: Calibri;
+        letter-spacing: 1px;
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+
+    .text.left {
+      left: 0;
+    }
+
+    .text.right {
+      right: 0;
+    }
+  }
+
+
+  .tabs {
+    padding-top: 25px;
+
+
+    mat-tab-header {
+      border-bottom: 0px;
+      padding-bottom: 0px;
+
+
+      .mat-tab-label-container {
+        .mat-tab-list {
+          .mat-tab-labels {
+            .mat-tab-label {
+              font-size: 25px;
+              font-family: Calibri;
+              border-right: 2px solid rgba(0,0,0,.1);
+              color: #151735;
+              opacity: 1;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+
+              .mat-tab-label-content {
+                color: #151735;
+              }
+            }
+
+            .mat-tab-label:last-child {
+              border-right: 0px solid rgba(0,0,0,.1);
+            }
+
+            .mat-tab-label-active {
+              .mat-tab-label-content {
+                color: $primary-color;
+                opacity: 1;
+              }
+            }
+          }
+
+          .mat-ink-bar {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+
+  .item {
+    display: table-cell !important;
+  }
+
+  section {
+    overflow: hidden;
+
+    header {
+      color: #151735;
+      font-size: 25px;
+      font-weight: bolder;
+      font-family: Calibri;
+      background: none;
+    }
+  }
+}

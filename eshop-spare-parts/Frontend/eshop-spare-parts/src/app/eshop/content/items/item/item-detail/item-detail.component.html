@@ -1,0 +1,55 @@
+<div class="progress-spinner-wrapper" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+<section class="row item" *ngIf="!isLoading">
+  <div class="col-6 galery">
+    <div class="main-img">
+      <div class="img-wrapper">
+        <img class="img" src="{{(item.imagePath != null) && 'https://api.ndusti.cz'+item.imagePath || '/assets/imgs/no-pic.jpg'}}" />
+        <span *ngIf="item.fakeDiscount != 0" class="on-sale">{{item.fakeDiscount}}%</span>
+      </div>
+    </div>
+    <div class="imgs" id="itemDetailSlick">
+      <div class="img-slide" [style.display]="getDisplay()" *ngFor="let img of item.images">
+        <img class="img" src="{{(img.imagePath != null) && 'https://api.ndusti.cz' + img.imagePath || '/assets/imgs/no-pic.jpg'}}" />
+      </div>
+    </div>
+
+  </div>
+  <div class="col-6 info">
+    <h2 class="title">{{item.title}}</h2>
+    <div class="description mb-3" [innerHTML]="item.description"></div>
+    <!--<div class="row mt-2 pb-3 border-bottom"><div class="col-6">Váha</div><div class="col-6"><b class="float-right d-block">{{item.weight}} Kg</b></div></div>-->
+    <div class="row mt-2 pb-3 border-bottom"><div class="col-6">Dostupnost</div><div class="col-6"><b class="float-right d-block">{{item.itemAvailability.title}} </b></div></div>
+    <div class="row mt-2 pb-3 border-bottom"><div class="col-6">Stav</div><div class="col-6"><b class="float-right d-block">{{item.itemState.name}} </b></div></div>
+    <div class="row mt-2 pb-3 border-bottom"><div class="col-6">Doba dodání</div><div class="col-6"><b class="float-right d-block">{{item.deliveryDate}} </b></div></div>
+    <div class="prices row mt-3 border-bottom">
+      <div *ngIf="item.fakeDiscount != 0" class="col-6 mb-3 dphnot-title">Cena bez slevy</div><div *ngIf="item.fakeDiscount != 0" class="col-6 mb-3 price-dphnot text-right"> <span>{{(item.price + ((item.price/100)*item.fakeDiscount))}},-</span></div>
+      <div class="col-6 mb-3 dph-title"><p *ngIf="item.fakeDiscount != 0">Akční cena</p><p *ngIf="item.fakeDiscount == 0">Cena</p></div><div class="col-6 mb-3 price-dph text-right"><b>{{item.price}},-</b></div>
+    </div>
+    <div class="order row mt-3">
+      <button class="btn btn-primary add-to-cart float-left d-flex" (click)="onItemAdd()">
+        <i class="material-icons">add_shopping_cart</i> Přidat do košíku
+      </button>
+    </div>
+  </div>
+
+
+
+</section>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>
+
+

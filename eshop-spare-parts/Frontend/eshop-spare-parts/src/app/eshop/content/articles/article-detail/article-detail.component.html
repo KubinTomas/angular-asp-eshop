@@ -1,0 +1,15 @@
+<div class="progress-spinner-wrapper" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<section *ngIf="!isLoading" class="row">
+  <h2 class="title border-bottom">
+    {{article.header}}
+  </h2>
+  <div class="img-wrapper">
+    <img class="img-fluid" src="{{(article.imagePath != null) && 'https://api.ndusti.cz'+article.imagePath || '/assets/imgs/no-pic.jpg'}}" />
+  </div>
+  <div class="description" [innerHTML]="article.content">
+
+  </div>
+</section>

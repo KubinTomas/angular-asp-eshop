@@ -1,0 +1,91 @@
+<div class="progress-spinner-wrapper" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<section *ngIf="!isLoading" d>
+  <div class="col-12 p-0">
+
+    <mat-form-field class="example-full-width" style="width:30%">
+      <input matInput placeholder='Zadejte název položky' (keyup)="applyFilter($event.target.value)">
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Id položky </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Název </th>
+          <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="itemAvailabilityId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Dostupnost </th>
+          <td mat-cell *matCellDef="let element"> {{element.itemAvailability.title}} </td>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> cena </th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} Kč </td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="fakeDiscount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Klamavá cena </th>
+          <td mat-cell *matCellDef="let element"> {{element.fakeDiscount}} </td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="deliveryDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Doba dodání </th>
+          <td mat-cell *matCellDef="let element"> {{element.deliveryDate}} </td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="itemStateId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Stav zboží </th>
+          <td mat-cell *matCellDef="let element"> {{element.itemState.name}} </td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="Settings">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nastavení </th>
+          <td mat-cell *matCellDef="let element">
+            <a md-icon-button [routerLink]="['../edit-item', element.id ]">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a md-icon-button (click)="onDelete(element)">
+              <i class="fa fa-trash"></i>
+            </a>
+          </td>
+        </ng-container>
+
+
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="settings">
+          <th mat-header-cell *matHeaderCellDef> Nastavení </th>
+          <td mat-cell *matCellDef="let element">
+            <a md-icon-button [routerLink]="['../edit-article', element.id ]">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a md-icon-button (click)="onDelete(element)">
+              <i class="fa fa-trash"></i>
+            </a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    </div>
+  </div>
+  
+
+
+</section>

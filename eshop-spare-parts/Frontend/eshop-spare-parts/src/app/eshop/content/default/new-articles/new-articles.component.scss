@@ -1,0 +1,21 @@
+app-new-articles {
+
+  section {
+    margin-bottom: 30px;
+
+    header {
+      color: #151735;
+      font-size: 25px;
+      font-weight: bolder;
+      font-family: Calibri;
+    }
+
+    main {
+      padding: 5px !important;
+
+      .article {
+        display: initial !important;
+      }
+    }
+  }
+}

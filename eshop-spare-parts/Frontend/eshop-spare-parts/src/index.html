@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Náhradní Díly</title>
+  <base href="/">
+<!-- 
+  <script src="https://api.mapy.cz/loader.js"></script>
+  <script>Loader.load()</script> -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/imgs/fav-custom.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.8.94/css/materialdesignicons.min.css">
+  <style>
+
+    @media only screen and (max-device-width: 480px) {
+      html {
+        zoom: 25%;
+      }
+    }
+
+    @media (min-width: 300px) {
+      html
+
+    {
+      zoom: 40%;
+    }
+
+    }
+
+
+    @media (min-width: 576px) {
+      html
+
+    {
+      zoom: 60%;
+    }
+
+    }
+
+    @media (min-width: 768px) {
+      html
+
+    {
+      zoom: 65%;
+    }
+
+    }
+
+    @media (min-width: 992px) {
+      html
+
+    {
+      zoom: 75%;
+    }
+
+    }
+
+    @media (min-width: 1200px) {
+      html
+
+    {
+      zoom: 100%;
+    }
+
+    }
+
+    @media only screen and (max-device-width: 480px) and (orientation:landscape) {
+      html {
+        zoom: 25%;
+      }
+    }
+
+    @media only screen and (max-device-width: 480px) and (orientation:portrait) {
+      html {
+        zoom: 25%;
+      }
+    }
+
+
+  </style>
+
+</head>
+
+<body>
+  <app-root></app-root>
+</body>
+
+
+
+<script>
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: 'your-app-id',
+      autoLogAppEvents: true,
+      xfbml: true,
+      version: 'v3.1'
+    });
+  };
+
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+</script>
+<script src="https://api.mapy.cz/loader.js"></script>
+
+</html>

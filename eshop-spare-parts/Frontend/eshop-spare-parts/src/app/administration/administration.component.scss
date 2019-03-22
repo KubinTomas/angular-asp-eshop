@@ -1,0 +1,163 @@
+nav {
+  background-color: #fff;
+  width: 100%;
+  border-bottom: 1px solid rgba(0,0,0,.0625) !important;
+  height: 55px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+
+  .nav-logo {
+    width: 100%;
+    height: 55px;
+    max-height: 55px;
+    border-bottom: 1px solid rgba(0,0,0,.0625);
+
+    h2 {
+      padding: 0px;
+      float: left;
+      padding: 5px;
+      width: 100%;
+
+      .logo-image {
+        display: none;
+
+        img {
+          max-width: 40px;
+          height: auto;
+          margin-left: 10px;
+          float: left;
+        }
+      }
+
+      .title {
+        text-align: left;
+        display: block;
+        float: left;
+        font-size: 21px;
+        width: calc(100% - 50px);
+        padding: 7px;
+        margin-left: 15px;
+        max-width: calc(95% - 50px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .navbar-nav {
+    max-height: 55px;
+    border-bottom: 1px solid rgba(0,0,0,.0625);
+
+    .account {
+      height: 100%;
+      display: block;
+      padding: 13px;
+
+      a {
+        display: block;
+        text-align: right;
+        color: #72777a;
+        width: 130px;
+
+        .icon-holder {
+          float: left;
+        }
+
+        .title {
+          float: left;
+          margin-left: 5px;
+        }
+
+        .arrow {
+          float: right;
+        }
+
+
+        &:focus, &:hover {
+          text-decoration: none;
+        }
+      }
+
+      .nav-menu-sub {
+        display: none;
+        padding-left: 0px;
+        list-style-type: none;
+        width: 100%;
+      }
+    }
+
+    .hover {
+      .nav-menu-sub {
+        position: absolute;
+        top: 56px;
+        right: 0;
+        width: 300px;
+        display: block;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.0625);
+        padding-top: 10px;
+
+        .nav-item {
+          display: inline-block;
+          width: 100%;
+          height: 30px;
+          cursor: pointer;
+
+          a {
+            display: block;
+            width: 100%;
+
+            .icon-holder {
+              width: 10%;
+              float: left;
+            }
+
+            .title {
+              max-width: 79%;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            .title:first-child {
+              margin-left: 35px;
+            }
+
+            .arrow {
+              width: 10%;
+              float: right;
+            }
+          }
+
+          .nav-menu-sub {
+            display: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.0625);
+            position: static;
+            height: auto;
+            width: 100%;
+          }
+        }
+
+        .open {
+          .nav-menu-sub {
+          }
+        }
+      }
+    }
+  }
+}
+
+main {
+  float: left;
+  width: 100%;
+  height:100%;
+  background-color: var(--light);
+
+  #mainContent {
+    margin-top: 65px;
+    margin-left: 260px;
+    width: unquote(" calc(100% - 260px)");
+  }
+}
+

@@ -1,0 +1,19 @@
+
+  <div class="item">
+    <div class="img-wrapper">
+      <a [routerLink]="['/item-detail', item.id]" class="img-link">
+        <img src="{{(item.imagePath != null) && 'https://api.ndusti.cz'+item.imagePath || '/assets/imgs/no-pic.jpg'}}" />
+      </a>
+      <button class="btn btn-primary add-to-cart" (click)= "onItemAdd()">
+        <i class="material-icons">add_shopping_cart</i>
+      </button>
+      <span *ngIf="item.fakeDiscount != '0'" class="on-sale">{{item.fakeDiscount}}%</span>
+        <span class="new" style="top: 31px;">Nové</span>
+    </div>
+    <a [routerLink]="['/item-detail', item.id]" class="title">{{item.title}}</a>
+    <div class="prices">
+      <b *ngIf="item.fakeDiscount != '0'" class="price-origin">{{(item.price + ((item.price/100) * item.fakeDiscount))}} Kč </b><b class="price-new"> {{item.price}} Kč </b>
+    </div>
+  </div>
+
+<!-- *ngIf= "item.fakeDiscount != 0" -->

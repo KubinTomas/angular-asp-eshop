@@ -1,0 +1,40 @@
+<div class="section">
+  <div class="row">
+    <div class="col-12">
+      <div class="slick" id="mainSlick">
+
+        <div class="slide">
+          <img style="background-image:url(/assets/img-slider/1.gif)" alt="">
+        </div>
+        <div class="slide">
+          <img style="background-image:url(/assets/img-slider/2.gif)" alt="">
+        </div>
+        <div class="slide">
+          <img style="background-image:url(/assets/img-slider/4.png);" alt="">
+        </div>
+        <div class="slide">
+          <img style="background-image:url(/assets/img-slider/6.jpg);" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section>
+  <mat-tab-group class="tabs">
+    <mat-tab class="tab" label="Novinky">
+
+      <section *ngIf="!mainSlickIsLoading">
+        <div class="row slick-items">
+          <app-item *ngFor="let item of itemManager.lastInsertedItems.ItemsDto" [item]="item" class="col-3 mt-3 mb-3 item" [style.display]="getMainSlickDisplay()"></app-item>
+        </div>
+      </section>
+
+    </mat-tab>
+    <mat-tab class="tab" label="Top">
+      <!-- <app-items></app-items> -->
+    </mat-tab>
+
+  </mat-tab-group>
+
+  <app-new-articles></app-new-articles>
+</section>

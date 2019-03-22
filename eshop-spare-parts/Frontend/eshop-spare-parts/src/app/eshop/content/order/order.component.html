@@ -1,0 +1,19 @@
+<mat-horizontal-stepper  #stepper [linear]="true" (selectionChange)="selectionChange($event)">  
+  <mat-step [completed] = "cartService.haveItems()" >
+
+    <!--  -->
+
+    <app-cart-summary></app-cart-summary>
+
+    <ng-template matStepLabel>Košík</ng-template>
+  </mat-step>
+  <mat-step [completed] = "orderService.transportCompany">
+    <ng-template matStepLabel>Doprava a platba</ng-template>
+    <app-shipping-and-payment #shippingAndPayment></app-shipping-and-payment>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Dodací údaje</ng-template>
+
+    <app-delivery-data></app-delivery-data>   
+  </mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,33 @@
+
+
+
+
+
+<div class="row ">
+  <div class="col-12">
+    <header>
+      Nové příspěvky
+    </header>
+    <main>
+      <div class="progress-spinner-wrapper" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <section class="slick" id="slickArticleVertical" *ngIf="!isLoading">
+
+        <div class="item" *ngFor="let article of articles" [style.display]="getDisplay()">
+
+                <div class="img-wrapper">
+                  <a class="img-link" [routerLink]="['/article-detail', article.id]">  <img src="{{(article.imagePath != null) && 'https://api.ndusti.cz'+article.imagePath || '/assets/imgs/no-pic.jpg'}}" /></a>
+                </div>
+            
+            <div class="title">
+              <a [routerLink]="['/article-detail', article.id]">{{article.header}}</a>
+            </div>
+        </div>
+        <!-- <app-item *ngFor="let item of itemManager.items.ItemsDto" [item]="item"></app-item> -->
+
+      </section>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+@import "./src/variables.scss";
+
+.item {
+  position:relative;
+  .img-wrapper {
+    position: relative;
+    display: table;
+    width: 100%;
+    overflow: hidden;
+    height: auto;
+
+    .img-vertical {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+
+      img {
+        max-width: 50%;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        display: initial;
+      }
+    }
+  }
+
+  .title {
+    padding-top:5px;
+    a {
+      font-family:Calibri;
+      font-size:18px;
+      color: #151735;
+      &:hover{
+        text-decoration:none;
+      }
+    }
+  }
+  .delete{
+    position:absolute;
+    right:0;
+    cursor:pointer;
+  }
+}
+
+
+  .mat-step-header {
+    .mat-step-icon {
+      background: $secondary-color;
+    }
+  }
+
+
+  .mat-form-field.mat-focused {
+    .mat-form-field-ripple {
+      background: $secondary-color;
+    }
+
+
+
+    .mat-form-field-label {
+      color: $secondary-color;
+    }
+  }
+
+  .ng5-slider {
+    .ng5-slider-span {
+      .ng5-slider-bar {
+        background: $secondary-color;
+      }
+    }
+
+    .ng5-slider-pointer {
+      background-color: $secondary-color !important;
+    }
+  }
+

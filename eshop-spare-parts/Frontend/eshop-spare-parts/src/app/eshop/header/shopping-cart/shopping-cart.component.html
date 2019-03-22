@@ -1,0 +1,26 @@
+ <ul id="cart">
+   <li class="cart-item" *ngFor="let item of shoppingCart.cartItems">
+     <a [routerLink]="['/item-detail', item.id]"  class="no-outline row m-0 item">
+       <div class="col-4 img-wrapper">
+         <div class="img-vertical">
+           <img src="{{(item.imagePath != null) && 'https://api.ndusti.cz'+item.imagePath || '/assets/imgs/no-pic.jpg'}}" />
+         </div>
+       </div>
+       <div class="col-8">
+         <div class="desc">
+           <h2 class="title border-bottom mb-0">{{item.title}}</h2>
+           <p class="mb-0">Počet: {{item.countInCart}}</p>
+           <p  class="mb-0">Cena: {{item.price}} Kč</p>
+         </div>
+       </div>
+     </a>
+   </li>
+   <li *ngIf="shoppingCart.cartItems.length == 0">
+     <div class="row">
+       <div class="col-12 ">
+         <h6 class="p-3 text-center">Nemáte žádné přidané zboží. </h6>
+       </div>
+     </div>
+
+   </li>
+ </ul>
