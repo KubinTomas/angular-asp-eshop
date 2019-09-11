@@ -16,10 +16,10 @@ namespace EshopSpareParts.Services
     {
         string destination;
         bool _disposed = true;
-        string host = "smtp.forpsi.com";
-        string fromAddress = "postmaster@amadeodecay.com";
+        string host = "----------";
+        string fromAddress = "----------;
         string displayName = "Usti nahradni dily!";
-        string password = "NLU9XBL6!3";
+        string password = "----------";
 
         public EmailService(string destination)
         {
